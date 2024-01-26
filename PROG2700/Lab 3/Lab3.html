@@ -1,0 +1,44 @@
+const path = [1, 2, 3, 6, 9, 34, 2, 6];
+function findConsecutiveWonders(path) {
+  let sum = 0;
+  let consecutiveWonders = [];
+  for (let i = 0; i < path.length - 2; i++) {
+    
+    if (path[i] + path[i + 1] + path[i + 2] === 6) {
+      
+      consecutiveWonders = [path[i], path[i + 1], path[i + 2]];
+      sum = consecutiveWonders.reduce((acc, wonder) => acc + wonder, 0);
+      break; 
+    }
+  }
+  return { consecutiveWonders, sum };
+}
+const result = findConsecutiveWonders(path);
+console.log("Consecutive Wonders:", result.consecutiveWonders);
+console.log("Sum:", result.sum);
+-----
+// Given journey
+const journey = [3, 2, 7, 5, 6, 7, 3, 8, 9, 10, 23, 2, 1, 2, 3];
+// Function to find the longest consecutive feast
+function findLongestConsecutiveFeast(journey) {
+  let longestFeast = [];
+  let currentFeast = [];
+  for (let i = 0; i < journey.length; i++) {
+    // Check if the current element is part of the consecutive feast
+    if (i > 0 && journey[i] === journey[i - 1] + 1) {
+      currentFeast.push(journey[i]);
+    } else {
+      // Start a new feast
+      currentFeast = [journey[i]];
+    }
+    // Update the longest feast if the current one is longer
+    if (currentFeast.length > longestFeast.length) {
+      longestFeast = currentFeast;
+    }
+  }
+  return { longestFeast, sum: longestFeast.reduce((acc, feast) => acc + feast, 0) };
+}
+// Call the function and log the result
+const result = findLongestConsecutiveFeast(journey);
+console.log("Longest Consecutive Feast:", result.longestFeast);
+console.log("Sum:", result.sum);
