@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Countdown to Next Birthday</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+
+<div class="w3-display-container" style="margin-bottom:50px">
+  <img src="https://picsum.photos/1200/500" style="width:100%">
+  <div class="w3-display-bottomleft w3-container w3-amber w3-hover-orange w3-hide-small"
+   style="bottom:10%;opacity:0.7;width:70%">
+  <h2>
+ 
+    we offer birthday incentives
+    <p id="countdown"></p>
+</h2>
+</div>
+</div>
+
+<div class="w3-row w3-container" style="margin:50px 0">
+<div class="w3-half w3-container">
+  <div class="w3-topbar w3-border-amber">
+    <img src="https://picsum.photos/200/100" style="width:100%">
+    <h2>Smart Vacation</h2>
+    <p>Full vacation control from your cell phone.</p>
+  </div>
+</div>
+
+<div class="w3-half w3-container">
+  <div class="w3-topbar w3-border-amber">
+    <img src="https://picsum.photos/200/100" style="width:100%">
+    <h2>Super Offers</h2>
+    <p>Up to 50% offers. Always 25% student offers.</p>
+  </div>
+</div>
+</div>
+
+<div class="w3-row w3-container" style="margin:50px 0">
+<div class="w3-half w3-container">
+  <div class="w3-topbar w3-border-orange">
+    <img src="https://picsum.photos/200/100" style="width:100%">
+    <h2>Car Rental Included</h2>
+    <p>Wherever you travel our car rental is included.</p>
+  </div>
+</div>
+
+<div class="w3-half w3-container">
+  <div class="w3-topbar w3-border-orange">
+    <img src="https://picsum.photos/200/100" style="width:100%">
+    <h2>Realize Your Dreams</h2>
+    <p>Don't wait until it is to late.</p>
+    </div>
+</div>
+</div>
+
+<html>
+<head>
+<title>Live Countdown to Next Birthday</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+
+<div class="w3-container w3-center">
+  <h2>Live Countdown to Next Birthday</h2>
+  <p id="countdown"></p>
+</div>
+
+<script>
+function updateCountdown() {
+  // Set birthdate to '2003-04-23T00:00:00'
+  var birthdate = new Date('2003-04-23T00:00:00');
+
+  // Format birthdate to display as "Month Day"
+  var formattedBirthdate = new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric' }).format(birthdate);
+
+  // Calculate current time
+  var currentTime = new Date().getTime();
+
+  // Calculate countdown to next birthday
+  var nextBirthday = new Date(currentTime);
+  nextBirthday.setFullYear(nextBirthday.getFullYear(), birthdate.getMonth(), birthdate.getDate());
+  if (nextBirthday < currentTime) {
+    nextBirthday.setFullYear(nextBirthday.getFullYear() + 1); // If birthday hasn't occurred yet this year, set it to next year
+  }
+
+  var timeDiff = nextBirthday - currentTime;
+  var seconds = Math.floor((timeDiff % 1000 * 60*24))/(1000*60*60);
+  var minutes = Math.floor((timeDiff % 1000 * 60 * 60))/(100 * 60);
+  var hours = Math.floor((timeDiff / (1000 * 60 * 60)) % 24);
+  var days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+  var weeks = Math.floor(days / 7);
+
+  // Display countdown
+  var countdownElement = document.getElementById("countdown");
+  countdownElement.innerHTML = "There are " + weeks + " weeks, " + days % 7 + " days, " + hours + " hours, " + minutes + " minutes, and " + seconds + " seconds until " + formattedBirthdate + "!";
+}
+
+// Update countdown every second
+setInterval(updateCountdown, 1000);
+
+// Call updateCountdown function initially
+updateCountdown();
+</script>
+
+</body>
+</html>
+
+
+
